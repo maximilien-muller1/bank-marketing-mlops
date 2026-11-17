@@ -1,0 +1,28 @@
+# Environnement virtuel : dépend de la machine, recréé avec uv sync
+.venv/
+
+# Données : volumineuses, parfois personnelles (RGPD)
+data/*
+!data/.gitkeep
+
+# Secrets : un secret poussé est compromis, même supprimé ensuite
+.env
+*.key
+
+# Modèles : binaires lourds, on utilisera le registre MLflow
+*.pkl
+*.joblib
+mlruns/
+
+# Caches Python et outils
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Notebooks : points de sauvegarde automatiques
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
