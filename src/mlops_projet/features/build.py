@@ -1,3 +1,4 @@
+
 """Jeu de features : le MÊME code pour l'entraînement et pour la prédiction.
 
 Usage : uv run python -m mlops_projet.features.build
@@ -16,14 +17,21 @@ def build_features(df):
     """Transforme des données clients en features pour le modèle."""
     # duration : connue seulement après l'appel (fuite) ; y : la cible
     features = df.drop(columns=["duration", "y"], errors="ignore")
+
     features["deja_contacte"] = (df["pdays"] != -1).astype(int)
     features["solde_negatif"] = (df["balance"] < 0).astype(int)
     features["nb_contacts_total"] = df["campaign"] + df["previous"]
+
     features["tranche_age"] = pd.cut(
         df["age"],
         bins=[17, 29, 45, 60, 100],
         labels=["18-29", "30-45", "46-60", "61+"],
     ).astype(str)
+
+    features["a_un_credit"] = (
+        (df["housing"] == "yes") | (df["loan"] == "yes")
+    ).astype(int)
+
     return features
 
 

@@ -11,6 +11,6 @@
 - catégories dans la liste connue (`unknown` autorisé)
 - balance sans limite (un solde peut être négatif)
 - Détail complet : `src/mlops_projet/data/schema.py`
-
+- campaign : entre 1 et 100 contacts par campagne.
 ## Si le contrat n'est pas respecté
 Le pipeline s'arrête, on n'entraîne pas, et on prévient le producteur.

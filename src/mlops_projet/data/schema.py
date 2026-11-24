@@ -25,7 +25,7 @@ bank_schema = pa.DataFrameSchema(  # le schéma = l'ensemble des règles du cont
             "jul", "aug", "sep", "oct", "nov", "dec",
         ])),
         "duration": pa.Column(int, pa.Check.ge(0)),  # durée de l'appel en secondes : >= 0
-        "campaign": pa.Column(int, pa.Check.ge(1)),  # nb de contacts pendant la campagne : >= 1
+        "campaign": pa.Column(int, pa.Check.in_range(1, 100)),  # nb de contacts pendant la campagne : >= 1
         "pdays": pa.Column(int, pa.Check.ge(-1)),  # jours depuis le dernier contact : -1 = jamais contacté
         "previous": pa.Column(int, pa.Check.ge(0)),  # nb de contacts avant la campagne : >= 0
         "poutcome": pa.Column(str, pa.Check.isin(["success", "failure", "other", "unknown"])),  # résultat de la campagne précédente
